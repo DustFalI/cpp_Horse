@@ -17,8 +17,8 @@ int main()
 			land[i][j] = -1;//初始化为-1
 		}
 	}
-	land[x][y] = 0;//起点标记为0步
-	q.push(point{x,y,0});//起点入队，当前位置的步数为0
+	land[x][y] = 0;//起点标记为0步，意为到达当前位置所需要的步数
+	q.push(point{x,y,0});//起点入队，到达当前位置的步数为0
 	while(!q.empty())
 	{
 		point p = q.front();
@@ -29,8 +29,8 @@ int main()
 			if(nx < 1 ||  ny < 1 || nx > n+1 || ny > m+1) continue;
 			if(land[nx][ny] == -1)//-1代表没有被标记
 			{
-				land[nx][ny] = p.step+1;//找到，标记为下一步到达点
-				q.push(point{nx,ny,p.step+1});//将下一步作为起点步
+				land[nx][ny] = p.step+1;//找到，记录到达该位置所需要的步数
+				q.push(point{nx,ny,p.step+1});//将该步数作为该点的起点步数，以达到步数累加的效果
 			}
 		}
 	}
