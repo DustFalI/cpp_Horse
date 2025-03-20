@@ -18,8 +18,7 @@ int main()
 		}
 	}
 	land[x][y] = 0;//起点标记为0步
-	q.push(point{x,y,0});//起点入队
-	int step = 1;//步数初始化为1
+	q.push(point{x,y,0});//起点入队，当前位置的步数为0
 	while(!q.empty())
 	{
 		point p = q.front();
@@ -30,8 +29,8 @@ int main()
 			if(nx < 1 ||  ny < 1 || nx > n+1 || ny > m+1) continue;
 			if(land[nx][ny] == -1)//-1代表没有被标记
 			{
-				land[nx][ny] = p.step+1;//
-				q.push(point{nx,ny,p.step+1});//
+				land[nx][ny] = p.step+1;//找到，标记为下一步到达点
+				q.push(point{nx,ny,p.step+1});//将下一步作为起点步
 			}
 		}
 	}
